@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>وبسایت خرید کالا</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>وبسایت خرید کالا</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">خانه</a></li>
+          <li><a href="about.html">درباره ما</a></li>
+          <li>
+            <a href="cart.html">سبد خرید <span id="cart-count">0</span></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="products">
+        <h2>کالاهای موجود</h2>
+        <div class="product-grid">
+          <a href="product1.html" class="product-link">
+            <div class="product">
+              <img
+                src="images/product1.webp"
+                alt="گوشی هوشمند سامسونگ گلکسی S23"
+                class="product-image"
+              />
+              <h3>گوشی هوشمند سامسونگ گلکسی S23</h3>
+              <p><b>قیمت:</b> ۲۵,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </a>
+          <a href="product2.html" class="product-link">
+            <div class="product">
+              <img
+                src="images/product2.webp"
+                alt="لپ‌تاپ اپل مک‌بوک ایر M2"
+                class="product-image"
+              />
+              <h3>لپ‌تاپ اپل مک‌بوک ایر M2</h3>
+              <p><b>قیمت:</b> ۴۵,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </a>
+          <a href="product3.html" class="product-link">
+            <div class="product">
+              <img
+                src="images/product3.webp"
+                alt="هدفون بی‌سیم سونی WH-1000XM5"
+                class="product-image"
+              />
+              <h3>هدفون بی‌سیم سونی WH-1000XM5</h3>
+              <p><b>قیمت:</b> ۱۲,۰۰۰,۰۰۰ تومان</p>
+            </div>
+          </a>
+          <a href="product4.html" class="product-link">
+            <div class="product">
+              <img
+                src="images/product4.webp"
+                alt="کتاب چگونه کمالگرا نباشیم نوشته استفن گایز"
+                class="product-image"
+              />
+              <h3>کتاب “چگونه کمالگرا نباشیم” نوشته استفن گایز</h3>
+              <p><b>قیمت:</b> ۱۵۰,۰۰۰ تومان</p>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 وبسایت خرید کالا. تمام حقوق محفوظ است.</p>
+    </footer>
+    <div id="add-to-cart-modal" class="modal">
+      <p>محصول به سبد خرید اضافه شد!</p>
+    </div>
+  </body>
+</html>

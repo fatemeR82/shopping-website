@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>وبسایت خرید کالا</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>وبسایت خرید کالا</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">خانه</a></li>
+          <li><a href="about.html">درباره ما</a></li>
+          <li>
+            <a href="cart.html">سبد خرید <span id="cart-count">0</span></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="cart">
+        <h2>سبد خرید شما</h2>
+        <button id="clear-cart">حذف همه اقلام</button>
+        <div id="cart-items"></div>
+        <p id="total-price">جمع کل: ۰ تومان</p>
+        <a href="purchase.html" id="proceed-to-buy">ادامه به فرم خرید</a>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 وبسایت خرید کالا. تمام حقوق محفوظ است.</p>
+    </footer>
+    <div id="add-to-cart-modal" class="modal">
+      <p>محصول به سبد خرید اضافه شد!</p>
+    </div>
+  </body>
+</html>

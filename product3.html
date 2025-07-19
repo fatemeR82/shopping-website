@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>وبسایت خرید کالا - هدفون بی‌سیم سونی WH-1000XM5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>وبسایت خرید کالا</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">خانه</a></li>
+          <li><a href="about.html">درباره ما</a></li>
+          <li>
+            <a href="cart.html">سبد خرید <span id="cart-count">0</span></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="product-detail">
+        <h2>جزئیات محصول: هدفون بی‌سیم سونی WH-1000XM5</h2>
+        <div class="image-wrapper">
+          <img
+            src="images/product3.webp"
+            alt="هدفون بی‌سیم سونی WH-1000XM5"
+            class="product-image-fixed"
+          />
+          <div class="zoom-lens"></div>
+        </div>
+        <p><b>قیمت:</b> ۱۲,۰۰۰,۰۰۰ تومان</p>
+        <p>
+          برند: سونی. نویز کنسلینگ، باتری 30 ساعته، صدای Hi-Res. ایده‌آل برای
+          موسیقی و سفر.
+        </p>
+        <button class="add-to-cart" data-product=" هدفون بی‌سیم سونی|12000000">
+          افزودن به سبد خرید
+        </button>
+        <section class="comments-section">
+          <h3>نظرات کاربران</h3>
+          <ul id="comments-list"></ul>
+          <form id="comment-form">
+            <textarea
+              id="comment-text"
+              placeholder="نظر خود را بنویسید..."
+              required
+            ></textarea>
+            <button type="submit">ارسال نظر</button>
+          </form>
+        </section>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 وبسایت خرید کالا. تمام حقوق محفوظ است.</p>
+    </footer>
+    <div id="add-to-cart-modal" class="modal">
+      <p>محصول به سبد خرید اضافه شد!</p>
+    </div>
+  </body>
+</html>
