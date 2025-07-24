@@ -8,16 +8,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
   <body>
     <header>
       <h1>وبسایت خرید کالا</h1>
       <nav>
         <ul>
-          <li><a href="index.html">خانه</a></li>
-          <li><a href="about.html">درباره ما</a></li>
           <li>
-            <a href="cart.html">سبد خرید <span id="cart-count">0</span></a>
+            <a href="index.html"><i class="fas fa-home ml-1"></i> خانه</a>
+          </li>
+          <li>
+            <a href="about.html"
+              ><i class="fas fa-info-circle ml-1"></i> درباره ما</a
+            >
+          </li>
+          <li>
+            <a href="cart.html"
+              ><i class="fas fa-shopping-cart ml-1"></i> سبد خرید
+              <span id="cart-count">0</span></a
+            >
           </li>
         </ul>
       </nav>
@@ -25,13 +38,17 @@
     <main>
       <section id="product-detail">
         <h2>جزئیات محصول: کتاب چگونه کمالگرا نباشیم نوشته استفن گایز</h2>
-        <div class="image-wrapper">
-          <img
-            src="images/product4.webp"
-            alt="کتاب چگونه کمالگرا نباشیم نوشته استفن گایز"
-            class="product-image-fixed"
-          />
-          <div class="zoom-lens"></div>
+        <div class="product-detail-images">
+          <div class="product-main-image">
+            <img
+              src="images/product4.webp"
+              alt=" کتاب چگونه کمالگرا نباشیم نوشته استفن گایز "
+              id="mainImage"
+            />
+          </div>
+          <div class="product-zoom-container">
+            <div id="zoomResult"></div>
+          </div>
         </div>
         <p><b>قیمت:</b> ۱۵۰,۰۰۰ تومان</p>
         <p>
@@ -40,10 +57,11 @@
         </p>
         <button
           class="add-to-cart"
-          data-product="کتاب چگونه کمالگرا نباشیم نوشته استفن گایز|150000"
+          data-product=" کتاب چگونه کمالگرا نباشیم نوشته استفن گایز|150000"
         >
-          افزودن به سبد خرید
+          <i class="fas fa-cart-plus"></i> افزودن به سبد خرید
         </button>
+
         <section class="comments-section">
           <h3>نظرات کاربران</h3>
           <ul id="comments-list"></ul>
@@ -62,7 +80,13 @@
       <p>&copy; 2023 وبسایت خرید کالا. تمام حقوق محفوظ است.</p>
     </footer>
     <div id="add-to-cart-modal" class="modal">
-      <p>محصول به سبد خرید اضافه شد!</p>
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <p>
+          <i class="fas fa-check-circle"></i> محصول با موفقیت به سبد خرید اضافه
+          شد!
+        </p>
+      </div>
     </div>
   </body>
 </html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>وبسایت خرید کالا - تأیید خرید</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>وبسایت خرید کالا</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html"><i class="fas fa-home ml-1"></i> خانه</a>
+          </li>
+          <li>
+            <a href="about.html"
+              ><i class="fas fa-info-circle ml-1"></i> درباره ما</a
+            >
+          </li>
+          <li>
+            <a href="cart.html"
+              ><i class="fas fa-shopping-cart ml-1"></i> سبد خرید
+              <span id="cart-count">0</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="purchase-confirmation">
+        <div class="success-message">
+          <h2>خرید با موفقیت ثبت شد</h2>
+          <p>از خرید شما متشکریم!</p>
+        </div>
+
+        <div class="tracking-info">
+          <h3>شماره پیگیری</h3>
+          <p id="tracking-number" class="tracking-number"></p>
+          <p>لطفاً شماره پیگیری را برای پیگیری سفارش خود یادداشت نمایید.</p>
+        </div>
+
+        <div class="order-details">
+          <h3>اطلاعات خریدار</h3>
+          <div id="buyer-info" class="info-box"></div>
+
+          <h3>محصولات خریداری شده</h3>
+          <div id="products-list" class="info-box"></div>
+
+          <h3>اطلاعات ارسال و پرداخت</h3>
+          <div id="shipping-payment-info" class="info-box"></div>
+        </div>
+
+        <div class="actions">
+          <a href="index.html" class="button">بازگشت به صفحه اصلی</a>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>© 2023 وبسایت خرید کالا. تمام حقوق محفوظ است.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

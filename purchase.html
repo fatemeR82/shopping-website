@@ -5,17 +5,29 @@
     <title>وبسایت خرید کالا - فرم خرید</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
   <body>
     <header>
       <h1>وبسایت خرید کالا</h1>
       <nav>
         <ul>
-          <li><a href="index.html">خانه</a></li>
-          <li><a href="about.html">درباره ما</a></li>
           <li>
-            <a href="cart.html">سبد خرید <span id="cart-count">0</span></a>
+            <a href="index.html"><i class="fas fa-home ml-1"></i> خانه</a>
+          </li>
+          <li>
+            <a href="about.html"
+              ><i class="fas fa-info-circle ml-1"></i> درباره ما</a
+            >
+          </li>
+          <li>
+            <a href="cart.html"
+              ><i class="fas fa-shopping-cart ml-1"></i> سبد خرید
+              <span id="cart-count">0</span></a
+            >
           </li>
         </ul>
       </nav>
@@ -24,23 +36,62 @@
       <section id="purchase-form">
         <h2>فرم خرید</h2>
         <form id="buyForm">
-          <label for="name">نام خریدار:</label>
-          <input type="text" id="name" name="name" required />
-          <label for="phone">شماره تلفن:</label>
-          <input type="tel" id="phone" name="phone" required />
-          <label for="province">استان:</label>
-          <select id="province" name="province" required>
-            <option value="">انتخاب کنید</option>
-            <option value="tehran">تهران</option>
-            <option value="isfahan">اصفهان</option>
-            <option value="shiraz">شیراز</option>
-          </select>
-          <label for="city">شهر:</label>
-          <select id="city" name="city" required disabled>
-            <option value="">ابتدا استان را انتخاب کنید</option>
-          </select>
-          <label for="address">ادامه آدرس (خیابان، پلاک و غیره):</label>
-          <input type="text" id="address" name="address" required />
+          <div class="form-group">
+            <label for="name">نام خریدار:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">شماره تلفن:</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="province">استان:</label>
+            <select id="province" name="province" class="form-control" required>
+              <option value="">انتخاب کنید</option>
+              <option value="tehran">تهران</option>
+              <option value="isfahan">اصفهان</option>
+              <option value="fars">فارس</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="city">شهر:</label>
+            <select
+              id="city"
+              name="city"
+              class="form-control"
+              required
+              disabled
+            >
+              <option value="">ابتدا استان را انتخاب کنید</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="address">ادامه آدرس (خیابان، پلاک و غیره):</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              class="form-control"
+              required
+            />
+          </div>
+
           <fieldset>
             <legend>نوع ارسال:</legend>
             <label
@@ -52,16 +103,39 @@
               (۵۰,۰۰۰ تومان اضافی)</label
             >
           </fieldset>
+
+          <!-- بخش سوال امنیتی -->
+          <div id="security-question" style="display: none">
+            <h3>سوال امنیتی</h3>
+            <p>لطفاً حاصل جمع اعداد زیر را وارد کنید:</p>
+            <p><span id="num1"></span> + <span id="num2"></span> = ?</p>
+            <div class="form-group">
+              <input
+                type="number"
+                id="security-answer"
+                class="form-control"
+                required
+              />
+            </div>
+            <button type="button" id="verify-answer">تأیید</button>
+          </div>
+
           <button type="button" id="buyButton">خرید</button>
         </form>
       </section>
     </main>
     <footer>
-      <p>&copy; 2023 وبسایت خرید کالا. تمام حقوق محفوظ است.</p>
+      <p>© 2023 وبسایت خرید کالا. تمام حقوق محفوظ است.</p>
     </footer>
-    <!-- Modal -->
     <div id="add-to-cart-modal" class="modal">
-      <p>محصول به سبد خرید اضافه شد!</p>
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <p>
+          <i class="fas fa-check-circle"></i> محصول با موفقیت به سبد خرید اضافه
+          شد!
+        </p>
+      </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>

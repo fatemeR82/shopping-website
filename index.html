@@ -6,16 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
   <body>
     <header>
       <h1>وبسایت خرید کالا</h1>
       <nav>
         <ul>
-          <li><a href="index.html">خانه</a></li>
-          <li><a href="about.html">درباره ما</a></li>
           <li>
-            <a href="cart.html">سبد خرید <span id="cart-count">0</span></a>
+            <a href="index.html"><i class="fas fa-home ml-1"></i> خانه</a>
+          </li>
+          <li>
+            <a href="about.html"
+              ><i class="fas fa-info-circle ml-1"></i> درباره ما</a
+            >
+          </li>
+          <li>
+            <a href="cart.html"
+              ><i class="fas fa-shopping-cart ml-1"></i> سبد خرید
+              <span id="cart-count">0</span></a
+            >
           </li>
         </ul>
       </nav>
@@ -23,49 +36,116 @@
     <main>
       <section id="products">
         <h2>کالاهای موجود</h2>
+
         <div class="product-grid">
           <a href="product1.html" class="product-link">
-            <div class="product">
-              <img
-                src="images/product1.webp"
-                alt="گوشی هوشمند سامسونگ گلکسی S23"
-                class="product-image"
-              />
-              <h3>گوشی هوشمند سامسونگ گلکسی S23</h3>
-              <p><b>قیمت:</b> ۲۵,۰۰۰,۰۰۰ تومان</p>
+            <div class="product fade-in">
+              <div class="product-image-container">
+                <div class="product-image-wrapper">
+                  <img
+                    src="images/product1.webp"
+                    alt="گوشی هوشمند سامسونگ گلکسی S23"
+                    class="product-image"
+                  />
+                </div>
+                <span class="product-badge">جدید</span>
+              </div>
+              <div class="product-content">
+                <h3>گوشی هوشمند سامسونگ گلکسی S23</h3>
+                <div class="product-rating">
+                  <span class="star"><i class="fas fa-star"></i></span>
+                  <span class="star"><i class="fas fa-star"></i></span>
+                  <span class="star"><i class="fas fa-star"></i></span>
+                  <span class="star"><i class="fas fa-star"></i></span>
+                  <span class="star"><i class="fas fa-star-half-alt"></i></span>
+                </div>
+                <div class="product-meta">
+                  <span>موجود در انبار</span>
+                  <span>الکترونیک</span>
+                </div>
+                <p><b>قیمت:</b> ۲۵,۰۰۰,۰۰۰ تومان</p>
+              </div>
             </div>
           </a>
           <a href="product2.html" class="product-link">
-            <div class="product">
-              <img
-                src="images/product2.webp"
-                alt="لپ‌تاپ اپل مک‌بوک ایر M2"
-                class="product-image"
-              />
-              <h3>لپ‌تاپ اپل مک‌بوک ایر M2</h3>
-              <p><b>قیمت:</b> ۴۵,۰۰۰,۰۰۰ تومان</p>
+            <div class="product fade-in">
+              <div class="product-image-container">
+                <img
+                  src="images/product2.webp"
+                  alt="لپ‌تاپ اپل مک‌بوک ایر M2"
+                  class="product-image"
+                />
+                <span class="product-badge">جدید</span>
+              </div>
+              <div class="product-content">
+                <h3>لپ‌تاپ اپل مک‌بوک ایر M2</h3>
+                <div class="product-rating">
+                  <span class="star"><i class="fas fa-star"></i></span>
+                  <span class="star"><i class="fas fa-star"></i></span>
+                  <span class="star"><i class="fas fa-star"></i></span>
+                  <span class="star"><i class="fas fa-star"></i></span>
+                  <span class="star"><i class="fas fa-star"></i></span>
+                </div>
+                <div class="product-meta">
+                  <span>موجود در انبار</span>
+                  <span>الکترونیک</span>
+                </div>
+                <p><b>قیمت:</b> ۴۵,۰۰۰,۰۰۰ تومان</p>
+              </div>
             </div>
           </a>
           <a href="product3.html" class="product-link">
-            <div class="product">
-              <img
-                src="images/product3.webp"
-                alt="هدفون بی‌سیم سونی WH-1000XM5"
-                class="product-image"
-              />
-              <h3>هدفون بی‌سیم سونی WH-1000XM5</h3>
-              <p><b>قیمت:</b> ۱۲,۰۰۰,۰۰۰ تومان</p>
+            <div class="product fade-in">
+              <div class="product-image-container">
+                <img
+                  src="images/product3.webp"
+                  alt="هدفون بی‌سیم سونی WH-1000XM5"
+                  class="product-image"
+                />
+                <span class="product-badge">جدید</span>
+              </div>
+              <div class="product-content">
+                <h3>هدفون بی‌سیم سونی WH-1000XM5</h3>
+                <div class="product-rating">
+                  <span class="star"><i class="fas fa-star"></i></span>
+                  <span class="star"><i class="fas fa-star"></i></span>
+                  <span class="star"><i class="fas fa-star"></i></span>
+                  <span class="star"><i class="fas fa-star"></i></span>
+                  <span class="star"><i class="fas fa-star-half-alt"></i></span>
+                </div>
+                <div class="product-meta">
+                  <span>موجود در انبار</span>
+                  <span>الکترونیک</span>
+                </div>
+                <p><b>قیمت:</b> ۱۲,۰۰۰,۰۰۰ تومان</p>
+              </div>
             </div>
           </a>
           <a href="product4.html" class="product-link">
-            <div class="product">
-              <img
-                src="images/product4.webp"
-                alt="کتاب چگونه کمالگرا نباشیم نوشته استفن گایز"
-                class="product-image"
-              />
-              <h3>کتاب “چگونه کمالگرا نباشیم” نوشته استفن گایز</h3>
-              <p><b>قیمت:</b> ۱۵۰,۰۰۰ تومان</p>
+            <div class="product fade-in">
+              <div class="product-image-container">
+                <img
+                  src="images/product4.webp"
+                  alt="کتاب چگونه کمالگرا نباشیم نوشته استفن گایز"
+                  class="product-image"
+                />
+                <span class="product-badge">جدید</span>
+              </div>
+              <div class="product-content">
+                <h3>کتاب "چگونه کمالگرا نباشیم" نوشته استفن گایز</h3>
+                <div class="product-rating">
+                  <span class="star"><i class="fas fa-star"></i></span>
+                  <span class="star"><i class="fas fa-star"></i></span>
+                  <span class="star"><i class="fas fa-star"></i></span>
+                  <span class="star"><i class="fas fa-star"></i></span>
+                  <span class="star"><i class="fas fa-star"></i></span>
+                </div>
+                <div class="product-meta">
+                  <span>موجود در انبار</span>
+                  <span>کتاب</span>
+                </div>
+                <p><b>قیمت:</b> ۱۵۰,۰۰۰ تومان</p>
+              </div>
             </div>
           </a>
         </div>
@@ -75,7 +155,13 @@
       <p>&copy; 2023 وبسایت خرید کالا. تمام حقوق محفوظ است.</p>
     </footer>
     <div id="add-to-cart-modal" class="modal">
-      <p>محصول به سبد خرید اضافه شد!</p>
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <p>
+          <i class="fas fa-check-circle"></i> محصول با موفقیت به سبد خرید اضافه
+          شد!
+        </p>
+      </div>
     </div>
   </body>
 </html>
