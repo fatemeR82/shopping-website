@@ -622,6 +622,13 @@ nav a:hover::after {
   background-color: #c0392b;
   transform: translateY(-2px);
 }
+/* اعمال فونت وزیرمتن به دکمه‌های خاص */
+#clear-cart,
+.cart-item button,
+.comments-section button,
+#comment-form button {
+  font-family: "Vazirmatn", sans-serif;
+}
 
 #cart-items {
   display: flex;
@@ -639,6 +646,7 @@ nav a:hover::after {
   justify-content: space-between;
   align-items: center;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+  gap: 20px;
 }
 
 .cart-item:hover {

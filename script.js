@@ -44,6 +44,12 @@ function showModal(modalId) {
   const modal = document.getElementById(modalId);
   if (!modal) return;
 
+  // مخفی کردن دکمه بستن
+  const closeButton = modal.querySelector(".modal-close");
+  if (closeButton) {
+    closeButton.style.display = "none";
+  }
+
   modal.style.display = "block";
 
   // اضافه کردن کلاس active برای انیمیشن
@@ -56,6 +62,11 @@ function showModal(modalId) {
     modal.classList.remove("active");
     setTimeout(() => {
       modal.style.display = "none";
+
+      // نمایش مجدد دکمه بستن برای دفعه بعد
+      if (closeButton) {
+        closeButton.style.display = "block";
+      }
     }, 300); // مدت زمان انیمیشن
   }, 2000);
 }
@@ -653,6 +664,9 @@ function setupPurchaseConfirmation() {
 document.addEventListener("DOMContentLoaded", function () {
   const commentForm = document.getElementById("comment-form");
   if (commentForm) {
+    // دریافت شناسه محصول از صفحه
+    const productId = getProductIdFromPage();
+
     commentForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const text = document.getElementById("comment-text").value;
@@ -663,34 +677,51 @@ document.addEventListener("DOMContentLoaded", function () {
         date: new Date().toLocaleDateString("fa-IR"),
       };
 
-      // دریافت کامنت‌های موجود
-      let comments = JSON.parse(localStorage.getItem("comments")) || [];
+      // دریافت کامنت‌های موجود برای این محصول
+      let comments =
+        JSON.parse(localStorage.getItem(`comments_${productId}`)) || [];
 
       // افزودن کامنت جدید
       comments.push(comment);
 
-      // ذخیره کامنت‌ها
-      localStorage.setItem("comments", JSON.stringify(comments));
+      // ذخیره کامنت‌ها برای این محصول
+      localStorage.setItem(`comments_${productId}`, JSON.stringify(comments));
 
       // نمایش کامنت‌ها
-      displayComments();
+      displayComments(productId);
 
       // پاک کردن فرم
       commentForm.reset();
     });
 
     // نمایش کامنت‌ها در بارگذاری صفحه
-    displayComments();
+    displayComments(productId);
   }
 });
 
+// تشخیص شناسه محصول از صفحه
+function getProductIdFromPage() {
+  // دریافت شناسه محصول از عنوان صفحه
+  const productTitle = document.querySelector("#product-detail h2");
+  if (productTitle) {
+    const productName = productTitle.textContent.split(":")[1].trim();
+    return productName; // استفاده از نام محصول به عنوان شناسه
+  }
+
+  // جایگزین: تلاش برای دریافت از URL
+  const path = window.location.pathname;
+  const filename = path.substring(path.lastIndexOf("/") + 1);
+  return filename.replace(".html", "");
+}
+
 // نمایش کامنت‌ها
-function displayComments() {
+function displayComments(productId) {
   const commentsList = document.getElementById("comments-list");
   if (!commentsList) return;
 
-  // دریافت کامنت‌ها
-  const comments = JSON.parse(localStorage.getItem("comments")) || [];
+  // دریافت کامنت‌ها برای این محصول
+  const comments =
+    JSON.parse(localStorage.getItem(`comments_${productId}`)) || [];
 
   // نمایش کامنت‌ها
   commentsList.innerHTML = "";
