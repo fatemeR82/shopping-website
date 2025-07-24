@@ -367,8 +367,17 @@ function renderCart() {
 
   cartItemsContainer.innerHTML = "";
 
+  // همیشه المان نمایش قیمت کل را دریافت کن
+  const totalPriceElement = document.getElementById("total-price");
+
   if (cart.length === 0) {
     cartItemsContainer.innerHTML = "<p>سبد خرید شما خالی است.</p>";
+
+    // صفر کردن مبلغ کل وقتی سبد خرید خالی است
+    if (totalPriceElement) {
+      totalPriceElement.textContent = "جمع کل: 0 تومان";
+    }
+
     const proceedButton = document.getElementById("proceed-to-buy");
     if (proceedButton) {
       proceedButton.style.display = "none";
@@ -389,9 +398,9 @@ function renderCart() {
     });
 
     // نمایش جمع کل
-    document.getElementById(
-      "total-price"
-    ).textContent = `جمع کل: ${total.toLocaleString()} تومان`;
+    if (totalPriceElement) {
+      totalPriceElement.textContent = `جمع کل: ${total.toLocaleString()} تومان`;
+    }
 
     const proceedButton = document.getElementById("proceed-to-buy");
     if (proceedButton) {
@@ -447,9 +456,52 @@ function setupPurchaseForm() {
     citySelect.value = "";
   });
 
+  // اضافه کردن عناصر نمایش خطا برای هر فیلد
+  const formFields = [
+    "name",
+    "phone",
+    "province",
+    "city",
+    "address",
+    "shipping",
+  ];
+  formFields.forEach((field) => {
+    // بررسی اینکه آیا عنصر خطا قبلاً وجود دارد
+    if (!document.getElementById(`${field}-error`)) {
+      const errorSpan = document.createElement("span");
+      errorSpan.id = `${field}-error`;
+      errorSpan.className = "error-msg";
+      errorSpan.style.display = "none";
+      errorSpan.style.color = "red";
+      errorSpan.style.fontSize = "0.9em";
+      errorSpan.style.marginTop = "5px";
+
+      // اضافه کردن عنصر خطا بعد از فیلد مربوطه
+      if (field === "shipping") {
+        // برای رادیو باتن‌ها، بعد از فیلدست قرار بگیرد
+        const fieldset = document.querySelector("fieldset");
+        if (fieldset) fieldset.appendChild(errorSpan);
+      } else {
+        const inputElement = document.getElementById(field);
+        if (inputElement && inputElement.parentNode) {
+          inputElement.parentNode.appendChild(errorSpan);
+        }
+      }
+    }
+  });
+
   // کلیک روی دکمه خرید
   if (buyButton) {
     buyButton.addEventListener("click", () => {
+      // پاک کردن خطاهای قبلی
+      formFields.forEach((field) => {
+        const errorElement = document.getElementById(`${field}-error`);
+        if (errorElement) {
+          errorElement.textContent = "";
+          errorElement.style.display = "none";
+        }
+      });
+
       // جمع‌آوری تمام فیلدهای ضروری
       const name = document.getElementById("name").value;
       const phone = document.getElementById("phone").value;
@@ -460,25 +512,54 @@ function setupPurchaseForm() {
         'input[name="shipping"]:checked'
       );
 
-      // بررسی دستی تمام فیلدها
-      if (name && phone && province && city && address && shippingMethod) {
-        // نمایش سوال امنیتی
-        showSecurityQuestion();
-      } else {
-        // نمایش پیام خطا با مشخص کردن فیلدهای خالی
-        let missingFields = [];
-        if (!name) missingFields.push("نام خریدار");
-        if (!phone) missingFields.push("شماره تلفن");
-        if (!province) missingFields.push("استان");
-        if (!city) missingFields.push("شهر");
-        if (!address) missingFields.push("آدرس");
-        if (!shippingMethod) missingFields.push("نوع ارسال");
+      // بررسی فیلدها و نمایش خطاها
+      let isValid = true;
 
-        alert(
-          `لطفا تمام فیلدها را پر کنید. فیلدهای خالی: ${missingFields.join(
-            ", "
-          )}`
-        );
+      if (!name) {
+        document.getElementById("name-error").textContent =
+          "لطفاً نام خریدار را وارد کنید";
+        document.getElementById("name-error").style.display = "block";
+        isValid = false;
+      }
+
+      if (!phone) {
+        document.getElementById("phone-error").textContent =
+          "لطفاً شماره تلفن را وارد کنید";
+        document.getElementById("phone-error").style.display = "block";
+        isValid = false;
+      }
+
+      if (!province) {
+        document.getElementById("province-error").textContent =
+          "لطفاً استان را انتخاب کنید";
+        document.getElementById("province-error").style.display = "block";
+        isValid = false;
+      }
+
+      if (!city) {
+        document.getElementById("city-error").textContent =
+          "لطفاً شهر را انتخاب کنید";
+        document.getElementById("city-error").style.display = "block";
+        isValid = false;
+      }
+
+      if (!address) {
+        document.getElementById("address-error").textContent =
+          "لطفاً آدرس را وارد کنید";
+        document.getElementById("address-error").style.display = "block";
+        isValid = false;
+      }
+
+      if (!shippingMethod) {
+        document.getElementById("shipping-error").textContent =
+          "لطفاً نوع ارسال را انتخاب کنید";
+        document.getElementById("shipping-error").style.display = "block";
+        isValid = false;
+      }
+
+      // اگر همه فیلدها معتبر بودند، سوال امنیتی را نمایش بده
+      if (isValid) {
+        showSecurityQuestion();
       }
     });
   }

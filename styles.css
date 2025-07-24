@@ -1,6 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
-
+/* اعمال فونت وزیرمتن به تمام عناصر */
+body,
+#clear-cart,
+.cart-item button,
+.comments-section button,
+#comment-form button,
+#buyButton,
+#proceed-to-buy,
+.add-to-cart,
+select,
+textarea,
+input,
+option,
+button,
+.btn,
+fieldset,
+legend,
+span.error-msg,
+.error-msg,
+.radio-label,
+::placeholder {
+  font-family: "Vazirmatn", sans-serif !important;
+}
 :root {
   --primary: #3a86ff;
   --primary-dark: #2168e5;
@@ -629,7 +651,24 @@ nav a:hover::after {
 #comment-form button {
   font-family: "Vazirmatn", sans-serif;
 }
-
+#clear-cart,
+.cart-item button,
+.comments-section button,
+#comment-form button,
+#buyButton,
+#proceed-to-buy,
+.add-to-cart,
+select,
+textarea,
+input,
+option,
+button,
+.btn,
+::placeholder,
+fieldset,
+legend {
+  font-family: "Vazirmatn", sans-serif !important;
+}
 #cart-items {
   display: flex;
   flex-direction: column;
