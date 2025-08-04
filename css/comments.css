@@ -1,0 +1,133 @@
+.comments-section {
+  background-color: #f8f9fa;
+  border-radius: var(--radius-md);
+  padding: 25px;
+  margin-top: 40px;
+}
+
+.comments-section h3 {
+  color: var(--text-dark);
+  margin-bottom: 20px;
+}
+
+#comments-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 25px;
+}
+
+#comments-list li {
+  background-color: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 15px;
+  position: relative;
+  padding-right: 50px;
+}
+
+#comments-list li::before {
+  content: "💭";
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 35px;
+  height: 35px;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+#comments-list li p {
+  margin-bottom: 10px;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+#comments-list li small {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+#comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#comment-text {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: "Vazirmatn", sans-serif;
+  font-size: 1rem;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+#comment-text:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+#comment-form button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  font-family: "Vazirmatn", sans-serif;
+}
+
+#comment-form button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+/* Responsive styles for comments */
+@media (max-width: 768px) {
+  .comments-section {
+    padding: 20px;
+    margin-top: 30px;
+  }
+
+  #comments-list li {
+    padding: 15px;
+  }
+
+  #comments-list li::before {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
+
+  #comments-list li p {
+    padding: 12px 12px 12px 40px;
+  }
+
+  #comments-list li small {
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  #comment-form,
+  .comments-section {
+    padding: 15px;
+  }
+
+  #comments-list li {
+    padding: 12px;
+  }
+}

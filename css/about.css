@@ -1,0 +1,29 @@
+/* css/about.css */
+.about {
+  background-color: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  margin: 30px auto;
+  max-width: 800px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+}
+
+.about h2 {
+  color: var(--text-dark);
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  text-align: center;
+  position: relative;
+}
+
+.about h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  right: 50%;
+  transform: translateX(50%);
+  width: 50px;
+  height: 3px;
+  background-color: var(--primary);
+}

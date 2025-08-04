@@ -5,7 +5,12 @@
     <title>وبسایت خرید کالا - درباره ما</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -24,7 +29,7 @@
               ><i class="fas fa-info-circle ml-1"></i> درباره ما</a
             >
           </li>
-          <li>
+          <li class="cart-icon">
             <a href="cart.html"
               ><i class="fas fa-shopping-cart ml-1"></i> سبد خرید
               <span id="cart-count">0</span></a
@@ -34,7 +39,7 @@
       </nav>
     </header>
     <main>
-      <section id="about">
+      <section class="about">
         <h2>درباره ما</h2>
         <p>
           وبسایت خرید کالا یک فروشگاه آنلاین معتبر است که از سال ۲۰۲۰ فعالیت خود
@@ -51,14 +56,6 @@
     <footer>
       <p>&copy; 2023 وبسایت خرید کالا. تمام حقوق محفوظ است.</p>
     </footer>
-    <div id="add-to-cart-modal" class="modal">
-      <div class="modal-content">
-        <span class="modal-close">&times;</span>
-        <p>
-          <i class="fas fa-check-circle"></i> محصول با موفقیت به سبد خرید اضافه
-          شد!
-        </p>
-      </div>
-    </div>
+    <script type="module" src="script.js"></script>
   </body>
 </html>

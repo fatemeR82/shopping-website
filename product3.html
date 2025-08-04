@@ -5,7 +5,12 @@
     <title>وبسایت خرید کالا - هدفون بی‌سیم سونی WH-1000XM5</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -24,7 +29,7 @@
               ><i class="fas fa-info-circle ml-1"></i> درباره ما</a
             >
           </li>
-          <li>
+          <li class="cart-icon">
             <a href="cart.html"
               ><i class="fas fa-shopping-cart ml-1"></i> سبد خرید
               <span id="cart-count">0</span></a
@@ -34,13 +39,13 @@
       </nav>
     </header>
     <main>
-      <section id="product-detail">
+      <section id="product-detail" class="product-detail-section">
         <h2>جزئیات محصول: هدفون بی‌سیم سونی WH-1000XM5</h2>
         <div class="product-detail-images">
           <div class="product-main-image">
             <img
               src="images/product3.webp"
-              alt="هدفون بی‌سیم سونی WH-1000XM5 "
+              alt="هدفون بی‌سیم سونی WH-1000XM5"
               id="mainImage"
             />
           </div>
@@ -50,8 +55,8 @@
         </div>
         <p><b>قیمت:</b> ۱۲,۰۰۰,۰۰۰ تومان</p>
         <p>
-          برند: سونی. نویز کنسلینگ، باتری 30 ساعته، صدای Hi-Res. ایده‌آل برای
-          موسیقی و سفر.
+          برند: سونی. فناوری حذف نویز پیشرفته، باتری 30 ساعته، اتصال بلوتوث 5.2.
+          کیفیت صدای فوق‌العاده برای موسیقی و تماس.
         </p>
         <button
           class="add-to-cart"
@@ -74,16 +79,8 @@
       </section>
     </main>
     <footer>
-      <p>&copy; 2023 وبسایت خرید کالا. تمام حقوق محفوظ است.</p>
+      <p>&copy; 2023 وبسایت خرید کال</p>
     </footer>
-    <div id="add-to-cart-modal" class="modal">
-      <div class="modal-content">
-        <span class="modal-close">&times;</span>
-        <p>
-          <i class="fas fa-check-circle"></i> محصول با موفقیت به سبد خرید اضافه
-          شد!
-        </p>
-      </div>
-    </div>
+    <script type="module" src="script.js"></script>
   </body>
 </html>

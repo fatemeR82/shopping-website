@@ -5,6 +5,12 @@
     <title>وبسایت خرید کالا - فرم خرید</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -23,7 +29,7 @@
               ><i class="fas fa-info-circle ml-1"></i> درباره ما</a
             >
           </li>
-          <li>
+          <li class="cart-icon">
             <a href="cart.html"
               ><i class="fas fa-shopping-cart ml-1"></i> سبد خرید
               <span id="cart-count">0</span></a
@@ -33,9 +39,9 @@
       </nav>
     </header>
     <main>
-      <section id="purchase-form">
+      <section id="purchase-form" class="purchase-form-section">
         <h2>فرم خرید</h2>
-        <form id="buyForm">
+        <form id="buyForm" class="buy-form">
           <div class="form-group">
             <label for="name">نام خریدار:</label>
             <input
@@ -104,7 +110,6 @@
             >
           </fieldset>
 
-          <!-- بخش سوال امنیتی -->
           <div id="security-question" style="display: none">
             <h3>سوال امنیتی</h3>
             <p>لطفاً حاصل جمع اعداد زیر را وارد کنید:</p>
@@ -127,15 +132,6 @@
     <footer>
       <p>© 2023 وبسایت خرید کالا. تمام حقوق محفوظ است.</p>
     </footer>
-    <div id="add-to-cart-modal" class="modal">
-      <div class="modal-content">
-        <span class="modal-close">&times;</span>
-        <p>
-          <i class="fas fa-check-circle"></i> محصول با موفقیت به سبد خرید اضافه
-          شد!
-        </p>
-      </div>
-    </div>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
   </body>
 </html>

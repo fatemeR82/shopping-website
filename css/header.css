@@ -1,0 +1,105 @@
+/* css/header.css */
+header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: white;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 24px;
+}
+
+nav li {
+  margin: 0;
+}
+
+nav a {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  padding: 6px 0;
+  font-size: 0.95rem;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  right: 0;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.cart-icon {
+  position: relative;
+}
+
+#cart-count {
+  background-color: var(--accent);
+  color: var(--text-dark);
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-right: 5px;
+  display: inline-block;
+  min-width: 20px;
+  height: 20px;
+  line-height: 16px;
+  text-align: center;
+}
+
+/* Mobile Header Optimization */
+@media (max-width: 768px) {
+  header {
+    padding: 10px 0;
+  }
+
+  header h1 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+  }
+
+  nav ul {
+    margin-top: 8px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    font-size: 0.85rem;
+    padding: 4px 0;
+  }
+
+  main {
+    margin: 10px auto;
+    padding: 0 15px;
+  }
+}

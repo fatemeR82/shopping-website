@@ -1,0 +1,65 @@
+/* css/toast.css */
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100px);
+  background-color: var(--success);
+  color: white;
+  padding: 15px 25px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  max-width: 90%;
+  word-wrap: break-word;
+}
+
+.toast.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast-success {
+  background-color: var(--success);
+}
+
+.toast-error {
+  background-color: var(--error);
+}
+
+.toast-warning {
+  background-color: var(--warning);
+  color: var(--text-dark);
+}
+
+.toast i {
+  font-size: 1.2rem;
+}
+
+.incomplete-form-toast {
+  max-width: 400px;
+  text-align: right;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .toast {
+    left: 10px;
+    right: 10px;
+    transform: translateY(-100px);
+    max-width: none;
+  }
+
+  .toast.active {
+    transform: translateY(0);
+  }
+}
