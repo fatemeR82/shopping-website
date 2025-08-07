@@ -1,19 +1,14 @@
 import { showToast } from "./toast.js";
 
-function getProductIdFromPage() {
-  const title = document.title;
-  if (title.includes("گوشی هوشمند سامسونگ")) return "product1";
-  if (title.includes("لپ‌تاپ اپل")) return "product2";
-  if (title.includes("هدفون بی‌سیم")) return "product3";
-  if (title.includes("کتاب")) return "product4";
-  return "unknown";
-}
-
 export function setupComments() {
   const commentForm = document.getElementById("comment-form");
   if (!commentForm) return;
 
-  const productId = getProductIdFromPage();
+  // دریافت شناسه محصول از URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const productId = urlParams.get("id");
+
+  if (!productId) return;
 
   commentForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -52,12 +47,19 @@ function displayComments(productId) {
   );
 
   commentsList.innerHTML = "";
+
+  if (comments.length === 0) {
+    commentsList.innerHTML =
+      "<li class='no-comments'>هنوز نظری ثبت نشده است.</li>";
+    return;
+  }
+
   comments.forEach((comment) => {
     const li = document.createElement("li");
     li.innerHTML = `
-      <p>${comment.text}</p>
-      <small>تاریخ: ${comment.date}</small>
-    `;
+            <p>${comment.text}</p>
+            <small>تاریخ: ${comment.date}</small>
+        `;
     commentsList.appendChild(li);
   });
 }

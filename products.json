@@ -1,0 +1,48 @@
+{
+  "products": [
+    {
+      "id": "product1",
+      "name": "گوشی هوشمند سامسونگ گلکسی S23",
+      "price": 25000000,
+      "brand": "سامسونگ",
+      "category": "الکترونیک",
+      "image": "images/product1.webp",
+      "description": "صفحه 6.1 اینچی AMOLED، دوربین 50MP، باتری 3900mAh. ایده‌آل برای عکاسی و گیمینگ.",
+      "isNew": true,
+      "inStock": true
+    },
+    {
+      "id": "product2",
+      "name": "لپ‌تاپ اپل مک‌بوک ایر M2",
+      "price": 45000000,
+      "brand": "اپل",
+      "category": "الکترونیک",
+      "image": "images/product2.webp",
+      "description": "پردازنده M2، صفحه نمایش Retina 13.6 اینچی، 8GB حافظه RAM، 256GB SSD. عملکرد فوق‌العاده برای کار و تفریح.",
+      "isNew": true,
+      "inStock": true
+    },
+    {
+      "id": "product3",
+      "name": "هدفون بی‌سیم سونی WH-1000XM5",
+      "price": 12000000,
+      "brand": "سونی",
+      "category": "الکترونیک",
+      "image": "images/product3.webp",
+      "description": "فناوری حذف نویز پیشرفته، باتری 30 ساعته، اتصال بلوتوث 5.2. کیفیت صدای فوق‌العاده برای موسیقی و تماس.",
+      "isNew": true,
+      "inStock": true
+    },
+    {
+      "id": "product4",
+      "name": " نوشته استفن گایز نباشیم کمالگرا  چگونه کتاب ",
+      "price": 150000,
+      "brand": "استفن گایز",
+      "category": "کتاب",
+      "image": "images/product4.webp",
+      "description": "راهنمای عملی برای رهایی از کمال‌گرایی و ایجاد عادت‌های مثبت. ترجمه فارسی، 280 صفحه. مناسب برای کسانی که به دنبال بهبود کیفیت زندگی هستند.",
+      "isNew": true,
+      "inStock": true
+    }
+  ]
+}

@@ -11,9 +11,11 @@ export function setupPurchaseForm() {
   const citySelect = document.getElementById("city");
   const buyButton = document.getElementById("buyButton");
   const verifyButton = document.getElementById("verify-answer");
+  const form = document.querySelector(".buy-form");
 
   if (!provinceSelect || !citySelect) return;
 
+  // تعریف شهرهای هر استان
   const cities = {
     tehran: [
       { value: "tehran", text: "تهران" },
@@ -32,6 +34,7 @@ export function setupPurchaseForm() {
     ],
   };
 
+  // تنظیم شهرها بر اساس استان انتخاب شده
   provinceSelect.addEventListener("change", () => {
     citySelect.innerHTML = '<option value="">انتخاب کنید</option>';
     citySelect.disabled = !provinceSelect.value;
@@ -43,13 +46,17 @@ export function setupPurchaseForm() {
         option.textContent = city.text;
         citySelect.appendChild(option);
       });
+      validateField("province", provinceSelect.value);
     } else {
       citySelect.innerHTML =
         '<option value="">ابتدا استان را انتخاب کنید</option>';
+      showError("province", "لطفاً استان را انتخاب کنید");
     }
     citySelect.value = "";
+    validateField("city", ""); // پاک کردن اعتبارسنجی شهر
   });
 
+  // ایجاد المان‌های خطا برای فیلدها اگر وجود ندارند
   const formFields = [
     "name",
     "phone",
@@ -81,8 +88,44 @@ export function setupPurchaseForm() {
     }
   });
 
+  // افزودن راهنما به فیلدها
+  addFieldHint("name", "نام باید بین ۳ تا ۵۰ کاراکتر باشد");
+  addFieldHint(
+    "phone",
+    "شماره تلفن همراه باید ۱۱ رقم باشد (مثال: ۰۹۱۲۳۴۵۶۷۸۹)"
+  );
+  addFieldHint("address", "آدرس باید حداقل ۱۰ کاراکتر باشد");
+
+  // اضافه کردن event listener برای اعتبارسنجی در زمان تایپ
+  formFields.forEach((field) => {
+    if (field !== "shipping") {
+      const element = document.getElementById(field);
+      if (element) {
+        element.addEventListener("input", function () {
+          validateField(field, this.value);
+        });
+
+        // برای اعتبارسنجی در زمان از دست دادن فوکوس
+        element.addEventListener("blur", function () {
+          validateField(field, this.value, true);
+        });
+      }
+    }
+  });
+
+  // اعتبارسنجی برای گزینه‌های روش ارسال
+  const shippingOptions = document.querySelectorAll('input[name="shipping"]');
+  shippingOptions.forEach((option) => {
+    option.addEventListener("change", function () {
+      validateField("shipping", this.checked ? this.value : "");
+    });
+  });
+
   if (buyButton) {
-    buyButton.addEventListener("click", () => {
+    buyButton.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // پاک کردن همه پیام‌های خطا
       formFields.forEach((field) => {
         const errorElement = document.getElementById(`${field}-error`);
         if (errorElement) {
@@ -100,56 +143,34 @@ export function setupPurchaseForm() {
         'input[name="shipping"]:checked'
       );
 
-      let isValid = true;
-      let emptyFields = [];
+      // اعتبارسنجی همه فیلدها
+      const nameValid = validateField("name", name, true);
+      const phoneValid = validateField("phone", phone, true);
+      const provinceValid = validateField("province", province, true);
+      const cityValid = validateField("city", city, true);
+      const addressValid = validateField("address", address, true);
+      const shippingValid = validateField(
+        "shipping",
+        shippingMethod ? shippingMethod.value : "",
+        true
+      );
 
-      if (!name) {
-        document.getElementById("name-error").textContent =
-          "لطفاً نام خریدار را وارد کنید";
-        document.getElementById("name-error").style.display = "block";
-        emptyFields.push("نام خریدار");
-        isValid = false;
-      }
+      const isValid =
+        nameValid &&
+        phoneValid &&
+        provinceValid &&
+        cityValid &&
+        addressValid &&
+        shippingValid;
+      const emptyFields = [];
 
-      if (!phone) {
-        document.getElementById("phone-error").textContent =
-          "لطفاً شماره تلفن را وارد کنید";
-        document.getElementById("phone-error").style.display = "block";
-        emptyFields.push("شماره تلفن");
-        isValid = false;
-      }
-
-      if (!province) {
-        document.getElementById("province-error").textContent =
-          "لطفاً استان را انتخاب کنید";
-        document.getElementById("province-error").style.display = "block";
-        emptyFields.push("استان");
-        isValid = false;
-      }
-
-      if (!city) {
-        document.getElementById("city-error").textContent =
-          "لطفاً شهر را انتخاب کنید";
-        document.getElementById("city-error").style.display = "block";
-        emptyFields.push("شهر");
-        isValid = false;
-      }
-
-      if (!address) {
-        document.getElementById("address-error").textContent =
-          "لطفاً آدرس را وارد کنید";
-        document.getElementById("address-error").style.display = "block";
-        emptyFields.push("آدرس");
-        isValid = false;
-      }
-
-      if (!shippingMethod) {
-        document.getElementById("shipping-error").textContent =
-          "لطفاً نوع ارسال را انتخاب کنید";
-        document.getElementById("shipping-error").style.display = "block";
-        emptyFields.push("نوع ارسال");
-        isValid = false;
-      }
+      // جمع‌آوری فیلدهای خالی برای نمایش پیام
+      if (!name) emptyFields.push("نام خریدار");
+      if (!phone) emptyFields.push("شماره تلفن");
+      if (!province) emptyFields.push("استان");
+      if (!city) emptyFields.push("شهر");
+      if (!address) emptyFields.push("آدرس");
+      if (!shippingMethod) emptyFields.push("نوع ارسال");
 
       if (emptyFields.length > 0) {
         const message =
@@ -205,6 +226,138 @@ export function setupPurchaseForm() {
       }
     });
   }
+
+  // اعتبارسنجی فیلدها با قوانین خاص
+  function validateField(fieldName, value, showErrorMessage = false) {
+    let isValid = true;
+    let errorMessage = "";
+
+    switch (fieldName) {
+      case "name":
+        if (!value) {
+          isValid = false;
+          errorMessage = "لطفاً نام خریدار را وارد کنید";
+        } else if (value.length < 3) {
+          isValid = false;
+          errorMessage = "نام باید حداقل ۳ کاراکتر باشد";
+        } else if (value.length > 50) {
+          isValid = false;
+          errorMessage = "نام نمی‌تواند بیشتر از ۵۰ کاراکتر باشد";
+        } else if (
+          !/^[\u0600-\u06FF\s]+$/.test(value) &&
+          !/^[a-zA-Z\s]+$/.test(value)
+        ) {
+          isValid = false;
+          errorMessage = "نام باید شامل حروف فارسی یا انگلیسی باشد";
+        }
+        break;
+
+      case "phone":
+        if (!value) {
+          isValid = false;
+          errorMessage = "لطفاً شماره تلفن را وارد کنید";
+        } else if (!/^09\d{9}$/.test(value)) {
+          isValid = false;
+          errorMessage =
+            "شماره تلفن باید به فرمت صحیح (مثال: ۰۹۱۲۳۴۵۶۷۸۹) باشد";
+        }
+        break;
+
+      case "province":
+        if (!value) {
+          isValid = false;
+          errorMessage = "لطفاً استان را انتخاب کنید";
+        }
+        break;
+
+      case "city":
+        if (!value) {
+          isValid = false;
+          errorMessage = "لطفاً شهر را انتخاب کنید";
+        }
+        break;
+
+      case "address":
+        if (!value) {
+          isValid = false;
+          errorMessage = "لطفاً آدرس را وارد کنید";
+        } else if (value.length < 10) {
+          isValid = false;
+          errorMessage = "آدرس باید حداقل ۱۰ کاراکتر باشد";
+        } else if (value.length > 200) {
+          isValid = false;
+          errorMessage = "آدرس نمی‌تواند بیشتر از ۲۰۰ کاراکتر باشد";
+        }
+        break;
+
+      case "shipping":
+        if (!value) {
+          isValid = false;
+          errorMessage = "لطفاً نوع ارسال را انتخاب کنید";
+        }
+        break;
+    }
+
+    // نمایش یا مخفی کردن پیام خطا
+    const inputElement = document.getElementById(fieldName);
+    const errorElement = document.getElementById(`${fieldName}-error`);
+
+    if (errorElement) {
+      if (!isValid && showErrorMessage) {
+        errorElement.textContent = errorMessage;
+        errorElement.style.display = "block";
+        if (inputElement) {
+          inputElement.classList.add("input-error");
+        }
+      } else {
+        errorElement.style.display = "none";
+        if (inputElement) {
+          inputElement.classList.remove("input-error");
+        }
+      }
+    }
+
+    // نمایش بصری وضعیت اعتبارسنجی
+    if (inputElement && value) {
+      if (isValid) {
+        inputElement.style.borderColor = "#28a745";
+        inputElement.style.boxShadow = "0 0 0 3px rgba(40, 167, 69, 0.1)";
+      } else {
+        inputElement.style.borderColor = "#dc3545";
+        inputElement.style.boxShadow = "0 0 0 3px rgba(220, 53, 69, 0.1)";
+      }
+    } else if (inputElement) {
+      inputElement.style.borderColor = "";
+      inputElement.style.boxShadow = "";
+    }
+
+    return isValid;
+  }
+
+  // اضافه کردن راهنما به فیلدها
+  function addFieldHint(fieldName, hintText) {
+    const inputElement = document.getElementById(fieldName);
+    if (!inputElement) return;
+
+    const hintSpan = document.createElement("span");
+    hintSpan.className = "field-hint";
+    hintSpan.textContent = hintText;
+    hintSpan.style.color = "#6c757d";
+    hintSpan.style.fontSize = "12px";
+    hintSpan.style.marginTop = "2px";
+    hintSpan.style.display = "block";
+
+    inputElement.parentNode.insertBefore(hintSpan, inputElement.nextSibling);
+  }
+
+  // نمایش پیام خطا
+  function showError(fieldName, message) {
+    const errorElement = document.getElementById(`${fieldName}-error`);
+    if (errorElement) {
+      errorElement.textContent = message;
+      errorElement.style.display = "block";
+    }
+  }
 }
 
 function showSecurityQuestion() {
@@ -223,6 +376,11 @@ function showSecurityQuestion() {
 
   securityQuestionDiv.dataset.num1 = num1;
   securityQuestionDiv.dataset.num2 = num2;
+
+  // فوکوس روی فیلد پاسخ امنیتی
+  setTimeout(() => {
+    document.getElementById("security-answer").focus();
+  }, 100);
 }
 
 function finalizePurchase() {

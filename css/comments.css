@@ -20,10 +20,9 @@
   background-color: white;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 20px;
+  padding: 20px 60px 20px 20px;
   margin-bottom: 15px;
   position: relative;
-  padding-right: 50px;
 }
 
 #comments-list li::before {
@@ -31,8 +30,8 @@
   position: absolute;
   top: 15px;
   right: 15px;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   background-color: var(--primary);
   color: white;
   border-radius: 50%;
@@ -40,12 +39,15 @@
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
+  z-index: 1;
 }
 
 #comments-list li p {
   margin-bottom: 10px;
   color: var(--text-dark);
   line-height: 1.6;
+  position: relative;
+  z-index: 0;
 }
 
 #comments-list li small {

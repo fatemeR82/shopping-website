@@ -247,3 +247,13 @@
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
+.input-error {
+  border-color: #dc3545 !important;
+}
+
+.field-hint {
+  color: #6c757d;
+  font-size: 12px;
+  margin-top: 2px;
+  display: block;
+}

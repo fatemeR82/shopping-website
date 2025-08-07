@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>وبسایت خرید کالا</title>
+    <title>جزئیات محصول | وبسایت خرید کالا</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,7 +16,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <script src="script.js" type="module" defer></script>
-    <script src="js/index.js" type="module" defer></script>
+    <script src="js/product.js" type="module" defer></script>
   </head>
   <body>
     <header>
@@ -44,17 +44,26 @@
     </header>
 
     <main>
-      <section class="products-section">
-        <div class="container">
-          <h2>کالاهای موجود</h2>
-          <div class="product-grid">
-            <div class="loader-container">
-              <div class="loader"></div>
-              <p>در حال بارگذاری محصولات...</p>
-            </div>
+      <div class="container">
+        <section class="product-detail-section" id="product-detail">
+          <div class="loader-container">
+            <div class="loader"></div>
+            <p>در حال بارگذاری محصول...</p>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section class="comments-section">
+          <h3>نظرات کاربران</h3>
+          <ul id="comments-list"></ul>
+          <form id="comment-form">
+            <textarea
+              id="comment-text"
+              placeholder="نظر خود را بنویسید..."
+            ></textarea>
+            <button type="submit">ارسال نظر</button>
+          </form>
+        </section>
+      </div>
     </main>
 
     <footer>

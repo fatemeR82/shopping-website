@@ -1,4 +1,3 @@
-/* css/cart.css */
 .cart-section {
   background-color: var(--card-bg);
   border-radius: var(--radius-lg);
@@ -32,7 +31,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin-bottom: 20px;
+  margin: 25px 0;
 }
 
 .cart-item {
@@ -83,4 +82,67 @@
   font-weight: bold;
   color: var(--secondary);
   margin: 25px 0;
+}
+.item-info {
+  display: flex;
+  align-items: center;
+  text-align: right;
+}
+
+.item-thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-left: 15px;
+  border: 1px solid var(--border);
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-name {
+  font-weight: 600;
+  margin: 0;
+}
+
+.item-price {
+  color: var(--secondary);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-left: 15px;
+}
+
+.item-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.remove-item {
+  background-color: var(--error);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-family: "Vazirmatn", sans-serif;
+}
+
+.remove-item:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+.total-price-display {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--secondary);
+  margin: 25px 0;
+  text-align: left;
+  padding: 15px;
+  border-top: 1px solid var(--border);
 }

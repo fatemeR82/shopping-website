@@ -67,7 +67,10 @@ export function renderCart() {
   const totalPriceElement = document.getElementById("total-price");
 
   if (cart.length === 0) {
-    cartItemsContainer.innerHTML = "<p>سبد خرید شما خالی است.</p>";
+    cartItemsContainer.innerHTML = `<div class="empty-cart-message">
+      <i class="fas fa-shopping-cart" style="font-size: 2rem; margin-bottom: 15px; color: #ccc;"></i>
+      <p>سبد خرید شما خالی است.</p>
+    </div>`;
 
     if (totalPriceElement) {
       totalPriceElement.textContent = "جمع کل: 0 تومان";
@@ -83,10 +86,33 @@ export function renderCart() {
     cart.forEach((item, index) => {
       const cartItem = document.createElement("div");
       cartItem.classList.add("cart-item");
+
+      let imageSrc = item.image;
+      if (!imageSrc || imageSrc === "") {
+        // اگر آیدی محصول موجود است از آن استفاده کنیم، در غیر این صورت از نام محصول
+        const imageId = item.id || item.name.replace(/\s+/g, "-").toLowerCase();
+        // بررسی چند مسیر مختلف برای یافتن تصویر
+        imageSrc = `images/products/${imageId}.webp`;
+
+        // اگر در مرورگر هستیم، می‌توانیم وجود تصویر را بررسی کنیم
+        const img = new Image();
+        img.onerror = function () {
+          // اگر تصویر یافت نشد، از تصویر پیش‌فرض استفاده کنیم
+          this.src = "images/products/default.webp";
+        };
+        img.src = imageSrc;
+      }
       cartItem.innerHTML = `
-        <p>${item.name}</p>
-        <p class="price">${item.price.toLocaleString()} تومان</p>
-        <button class="remove-item" data-index="${index}">حذف</button>
+        <div class="item-info">
+          <img src="${imageSrc}" alt="${item.name}" class="item-thumbnail">
+          <div class="item-details">
+            <p class="item-name">${item.name}</p>
+          </div>
+        </div>
+        <div class="item-actions">
+          <span class="item-price">${item.price.toLocaleString()} تومان</span>
+          <button class="remove-item" data-index="${index}">حذف</button>
+        </div>
       `;
       cartItemsContainer.appendChild(cartItem);
       total += item.price;

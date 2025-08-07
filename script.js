@@ -22,10 +22,28 @@ document.addEventListener("DOMContentLoaded", function () {
       const productName = productData[0];
       const productPrice = parseInt(productData[1]);
 
+      const productId = this.getAttribute("data-id") || "";
+      let productImage = "";
+
+      const mainImage = document.getElementById("mainImage");
+      if (mainImage) {
+        productImage = mainImage.src;
+      } else {
+        const productCard = this.closest(".product-card");
+        if (productCard) {
+          const imgElement = productCard.querySelector(".product-image img");
+          if (imgElement) {
+            productImage = imgElement.src;
+          }
+        }
+      }
+
       addToCart(
         {
+          id: productId,
           name: productName,
           price: productPrice,
+          image: productImage,
         },
         showToast
       );
@@ -54,8 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   setupPurchaseForm();
-
   setupPurchaseConfirmation();
-
   setupComments();
 });
