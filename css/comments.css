@@ -97,39 +97,36 @@
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
-/* Responsive styles for comments */
-@media (max-width: 768px) {
-  .comments-section {
-    padding: 20px;
-    margin-top: 30px;
-  }
 
+@media (max-width: 768px) {
   #comments-list li {
-    padding: 15px;
+    padding: 15px 45px 15px 15px;
   }
 
   #comments-list li::before {
     width: 30px;
     height: 30px;
     font-size: 1rem;
+    top: 15px;
+    right: 10px;
   }
 
   #comments-list li p {
-    padding: 12px 12px 12px 40px;
+    padding: 0;
+    margin-right: 0;
   }
 
   #comments-list li small {
-    margin-right: 40px;
+    margin-right: 0;
   }
 }
 
 @media (max-width: 480px) {
-  #comment-form,
-  .comments-section {
-    padding: 15px;
+  #comments-list li {
+    padding: 12px 40px 12px 12px;
   }
 
-  #comments-list li {
-    padding: 12px;
+  #comments-list li::before {
+    right: 5px;
   }
 }

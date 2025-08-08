@@ -73,3 +73,16 @@ footer {
   padding: 20px 0;
   margin-top: auto;
 }
+
+@media (max-width: 768px) {
+  footer {
+    padding: 15px 0;
+    font-size: 14px;
+  }
+}
+@media (max-width: 480px) {
+  footer {
+    padding: 10px 0;
+    font-size: 12px;
+  }
+}
