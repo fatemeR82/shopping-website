@@ -1,10 +1,11 @@
+import { updateCartCount, addToCart } from "./cart.js";
 import { setupImageZoom } from "./image-zoom.js";
 import { setupComments } from "./comments.js";
 import { showToast } from "./toast.js";
-import { addToCart } from "./cart.js";
 
 document.addEventListener("DOMContentLoaded", function () {
-  // دریافت شناسه محصول از URL
+  updateCartCount();
+
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get("id");
 
@@ -13,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  // بارگذاری اطلاعات محصولات
   loadProductData(productId);
 });
 
@@ -32,15 +32,12 @@ async function loadProductData(productId) {
       return;
     }
 
-    // نمایش اطلاعات محصول
     renderProductDetail(product);
 
-    // راه‌اندازی سایر قابلیت‌ها
     document.title = `${product.name} | وبسایت خرید کالا`;
     setupImageZoom();
     setupComments();
 
-    // اضافه کردن گوش‌دهنده رویداد دکمه افزودن به سبد خرید
     const addToCartButton = document.querySelector(".add-to-cart");
     if (addToCartButton) {
       addToCartButton.addEventListener("click", function () {

@@ -4,7 +4,6 @@ export function setupComments() {
   const commentForm = document.getElementById("comment-form");
   if (!commentForm) return;
 
-  // دریافت شناسه محصول از URL
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get("id");
 

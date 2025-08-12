@@ -1,8 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
-  loadProducts();
-});
-
-async function loadProducts() {
+export async function loadProducts() {
   try {
     const response = await fetch("products.json");
     if (!response.ok) {
@@ -19,7 +15,7 @@ async function loadProducts() {
   }
 }
 
-function renderProducts(products) {
+export function renderProducts(products) {
   const productsGrid = document.querySelector(".product-grid");
   if (!productsGrid) return;
 

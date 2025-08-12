@@ -15,7 +15,6 @@ export function setupPurchaseForm() {
 
   if (!provinceSelect || !citySelect) return;
 
-  // تعریف شهرهای هر استان
   const cities = {
     tehran: [
       { value: "tehran", text: "تهران" },
@@ -34,7 +33,6 @@ export function setupPurchaseForm() {
     ],
   };
 
-  // تنظیم شهرها بر اساس استان انتخاب شده
   provinceSelect.addEventListener("change", () => {
     citySelect.innerHTML = '<option value="">انتخاب کنید</option>';
     citySelect.disabled = !provinceSelect.value;
@@ -53,10 +51,9 @@ export function setupPurchaseForm() {
       showError("province", "لطفاً استان را انتخاب کنید");
     }
     citySelect.value = "";
-    validateField("city", ""); // پاک کردن اعتبارسنجی شهر
+    validateField("city", "");
   });
 
-  // ایجاد المان‌های خطا برای فیلدها اگر وجود ندارند
   const formFields = [
     "name",
     "phone",
@@ -88,7 +85,6 @@ export function setupPurchaseForm() {
     }
   });
 
-  // افزودن راهنما به فیلدها
   addFieldHint("name", "نام باید بین ۳ تا ۵۰ کاراکتر باشد");
   addFieldHint(
     "phone",
@@ -96,7 +92,6 @@ export function setupPurchaseForm() {
   );
   addFieldHint("address", "آدرس باید حداقل ۱۰ کاراکتر باشد");
 
-  // اضافه کردن event listener برای اعتبارسنجی در زمان تایپ
   formFields.forEach((field) => {
     if (field !== "shipping") {
       const element = document.getElementById(field);
@@ -105,7 +100,6 @@ export function setupPurchaseForm() {
           validateField(field, this.value);
         });
 
-        // برای اعتبارسنجی در زمان از دست دادن فوکوس
         element.addEventListener("blur", function () {
           validateField(field, this.value, true);
         });
@@ -113,7 +107,6 @@ export function setupPurchaseForm() {
     }
   });
 
-  // اعتبارسنجی برای گزینه‌های روش ارسال
   const shippingOptions = document.querySelectorAll('input[name="shipping"]');
   shippingOptions.forEach((option) => {
     option.addEventListener("change", function () {
@@ -125,7 +118,6 @@ export function setupPurchaseForm() {
     buyButton.addEventListener("click", (e) => {
       e.preventDefault();
 
-      // پاک کردن همه پیام‌های خطا
       formFields.forEach((field) => {
         const errorElement = document.getElementById(`${field}-error`);
         if (errorElement) {
@@ -143,7 +135,6 @@ export function setupPurchaseForm() {
         'input[name="shipping"]:checked'
       );
 
-      // اعتبارسنجی همه فیلدها
       const nameValid = validateField("name", name, true);
       const phoneValid = validateField("phone", phone, true);
       const provinceValid = validateField("province", province, true);
@@ -164,7 +155,6 @@ export function setupPurchaseForm() {
         shippingValid;
       const emptyFields = [];
 
-      // جمع‌آوری فیلدهای خالی برای نمایش پیام
       if (!name) emptyFields.push("نام خریدار");
       if (!phone) emptyFields.push("شماره تلفن");
       if (!province) emptyFields.push("استان");
@@ -227,7 +217,6 @@ export function setupPurchaseForm() {
     });
   }
 
-  // اعتبارسنجی فیلدها با قوانین خاص
   function validateField(fieldName, value, showErrorMessage = false) {
     let isValid = true;
     let errorMessage = "";
@@ -298,7 +287,6 @@ export function setupPurchaseForm() {
         break;
     }
 
-    // نمایش یا مخفی کردن پیام خطا
     const inputElement = document.getElementById(fieldName);
     const errorElement = document.getElementById(`${fieldName}-error`);
 
@@ -317,7 +305,6 @@ export function setupPurchaseForm() {
       }
     }
 
-    // نمایش بصری وضعیت اعتبارسنجی
     if (inputElement && value) {
       if (isValid) {
         inputElement.style.borderColor = "#28a745";
@@ -334,7 +321,6 @@ export function setupPurchaseForm() {
     return isValid;
   }
 
-  // اضافه کردن راهنما به فیلدها
   function addFieldHint(fieldName, hintText) {
     const inputElement = document.getElementById(fieldName);
     if (!inputElement) return;
@@ -350,7 +336,6 @@ export function setupPurchaseForm() {
     inputElement.parentNode.insertBefore(hintSpan, inputElement.nextSibling);
   }
 
-  // نمایش پیام خطا
   function showError(fieldName, message) {
     const errorElement = document.getElementById(`${fieldName}-error`);
     if (errorElement) {
@@ -364,6 +349,7 @@ function showSecurityQuestion() {
   const securityQuestionDiv = document.getElementById("security-question");
   const num1Span = document.getElementById("num1");
   const num2Span = document.getElementById("num2");
+  const buyButton = document.getElementById("buyButton");
 
   const num1 = Math.floor(Math.random() * 10) + 1;
   const num2 = Math.floor(Math.random() * 10) + 1;
@@ -371,16 +357,28 @@ function showSecurityQuestion() {
   num1Span.textContent = num1;
   num2Span.textContent = num2;
 
-  securityQuestionDiv.style.display = "block";
-  document.getElementById("buyButton").style.display = "none";
+  const formSection = document.querySelector(".purchase-form-section");
+  if (formSection) {
+    window.scrollTo({
+      top: formSection.offsetTop - 20,
+      behavior: "smooth",
+    });
+  }
+
+  buyButton.style.opacity = "0";
+  setTimeout(() => {
+    buyButton.style.display = "none";
+
+    securityQuestionDiv.classList.add("active");
+
+    setTimeout(() => {
+      const answerInput = document.getElementById("security-answer");
+      if (answerInput) answerInput.focus();
+    }, 300);
+  }, 300);
 
   securityQuestionDiv.dataset.num1 = num1;
   securityQuestionDiv.dataset.num2 = num2;
-
-  // فوکوس روی فیلد پاسخ امنیتی
-  setTimeout(() => {
-    document.getElementById("security-answer").focus();
-  }, 100);
 }
 
 function finalizePurchase() {

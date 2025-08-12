@@ -8,10 +8,19 @@ export function updateCartCount() {
   const cartCountElement = document.getElementById("cart-count");
   if (cartCountElement) {
     const count = cart.length;
+
     if (count > 9) {
       cartCountElement.textContent = "9+";
+      cartCountElement.classList.add("double-digit");
     } else {
       cartCountElement.textContent = count;
+      cartCountElement.classList.remove("double-digit");
+    }
+
+    if (count === 0) {
+      cartCountElement.style.display = "none";
+    } else {
+      cartCountElement.style.display = "inline-flex";
     }
   }
 }
@@ -89,15 +98,11 @@ export function renderCart() {
 
       let imageSrc = item.image;
       if (!imageSrc || imageSrc === "") {
-        // اگر آیدی محصول موجود است از آن استفاده کنیم، در غیر این صورت از نام محصول
         const imageId = item.id || item.name.replace(/\s+/g, "-").toLowerCase();
-        // بررسی چند مسیر مختلف برای یافتن تصویر
         imageSrc = `images/products/${imageId}.webp`;
 
-        // اگر در مرورگر هستیم، می‌توانیم وجود تصویر را بررسی کنیم
         const img = new Image();
         img.onerror = function () {
-          // اگر تصویر یافت نشد، از تصویر پیش‌فرض استفاده کنیم
           this.src = "images/products/default.webp";
         };
         img.src = imageSrc;

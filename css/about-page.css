@@ -1,4 +1,7 @@
-/* css/about.css */
+@import "common.css";
+@import "header.css";
+@import "footer.css";
+
 .about {
   background-color: var(--card-bg);
   border-radius: var(--radius-lg);

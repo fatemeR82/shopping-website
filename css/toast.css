@@ -1,4 +1,3 @@
-/* css/toast.css */
 .toast {
   position: fixed;
   top: 20px;
@@ -31,11 +30,9 @@
 .toast-success {
   background-color: var(--success);
 }
-
 .toast-error {
   background-color: var(--error);
 }
-
 .toast-warning {
   background-color: var(--warning);
   color: var(--text-dark);
@@ -43,12 +40,6 @@
 
 .toast i {
   font-size: 1.2rem;
-}
-
-.incomplete-form-toast {
-  max-width: 400px;
-  text-align: right;
-  line-height: 1.5;
 }
 
 @media (max-width: 768px) {

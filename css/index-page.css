@@ -1,11 +1,36 @@
-/* استایل‌های گرید محصولات */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 ستون با عرض مساوی */
-  gap: 20px; /* فاصله بین محصولات */
+@import "common.css";
+@import "header.css";
+@import "footer.css";
+@import "buttons.css";
+@import "toast.css";
+
+.products-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--text-dark);
+  font-size: 1.8rem;
+  position: relative;
 }
 
-/* استایل محصول در گرید */
+.products-section h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  right: 50%;
+  transform: translateX(50%);
+  width: 50px;
+  height: 3px;
+  background-color: var(--primary);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  margin-top: 30px;
+}
+
 .product {
   display: flex;
   flex-direction: column;
@@ -86,15 +111,26 @@
   color: var(--text-light);
 }
 
-/* استایل‌های واکنش‌گرا برای صفحات کوچکتر */
 @media (max-width: 992px) {
   .product-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 ستون در تبلت */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .product {
+    height: auto;
+    min-height: 350px;
   }
 }
 
 @media (max-width: 576px) {
   .product-grid {
-    grid-template-columns: 1fr; /* 1 ستون در موبایل */
+    grid-template-columns: 1fr;
   }
 }

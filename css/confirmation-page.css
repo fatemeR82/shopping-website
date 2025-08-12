@@ -1,0 +1,135 @@
+@import "common.css";
+@import "header.css";
+@import "footer.css";
+@import "buttons.css";
+@import "toast.css";
+
+#purchase-confirmation {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.success-message {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: var(--radius-md);
+}
+
+.tracking-info {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.tracking-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary);
+  background-color: #f8f9fa;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  display: inline-block;
+  margin: 10px 0;
+  border: 2px dashed var(--primary);
+}
+
+.order-details h3 {
+  color: var(--text-dark);
+  margin: 25px 0 15px 0;
+  font-size: 1.3rem;
+}
+
+.info-box {
+  background-color: #f8f9fa;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.info-box p {
+  margin-bottom: 8px;
+}
+
+.info-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.info-box li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.info-box li:last-child {
+  border-bottom: none;
+}
+
+.actions {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.actions .button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Vazirmatn", sans-serif;
+  opacity: 1 !important;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.actions .button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  color: white !important;
+  opacity: 1 !important;
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+a.button:link,
+a.button:visited,
+a.button:hover,
+a.button:active {
+  color: white !important;
+  opacity: 1 !important;
+}
+@media (max-width: 768px) {
+  #purchase-confirmation {
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .tracking-number {
+    font-size: 1.2rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  #purchase-confirmation {
+    padding: 15px;
+  }
+
+  .info-box {
+    padding: 15px;
+  }
+}

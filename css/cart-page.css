@@ -1,3 +1,9 @@
+@import "common.css";
+@import "header.css";
+@import "footer.css";
+@import "buttons.css";
+@import "toast.css";
+
 .cart-section {
   background-color: var(--card-bg);
   border-radius: var(--radius-lg);
@@ -51,38 +57,6 @@
   transform: translateY(-2px);
 }
 
-.cart-item p {
-  margin: 0;
-  font-size: 1rem;
-  color: var(--text-dark);
-}
-
-.cart-item .price {
-  color: var(--secondary);
-  font-weight: bold;
-}
-
-.cart-item button {
-  background-color: var(--error);
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-family: "Vazirmatn", sans-serif;
-}
-
-.cart-item button:hover {
-  background-color: #c0392b;
-}
-
-.total-price-display {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: var(--secondary);
-  margin: 25px 0;
-}
 .item-info {
   display: flex;
   align-items: center;
@@ -145,4 +119,71 @@
   text-align: left;
   padding: 15px;
   border-top: 1px solid var(--border);
+}
+
+.clear-cart-btn {
+  background-color: var(--error);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-bottom: 20px;
+  font-family: "Vazirmatn", sans-serif;
+  opacity: 0.9;
+}
+
+.clear-cart-btn:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+.checkout-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.checkout-btn {
+  background-color: #2ecc71;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: var(--radius-md, 8px);
+  padding: 15px 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
+  display: inline-block;
+  font-family: "Vazirmatn", sans-serif;
+  width: 240px;
+  box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+}
+
+.checkout-btn:hover {
+  background-color: #27ae60;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md, 0 4px 6px rgba(0, 0, 0, 0.1));
+  color: white;
+}
+
+.empty-cart-message {
+  color: #777;
+  font-size: 1.1rem;
+  padding: 30px 0;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  background-color: #f9f9f9;
+}
+
+@media (max-width: 768px) {
+  .cart-item {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
 }
